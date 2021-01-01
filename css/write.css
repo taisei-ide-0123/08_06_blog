@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+  text-align: center;
+  background-color: #f7f7f7;
+  color: #6f6f6f;
+}
+
+header {
+  width: 100%;
+  height: 70px;
+  background-color: #f7f7f7;
+  color: #6f6f6f;
+  border-bottom: 1px solid lightgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-title p {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+input {
+  width: 100%;
+  height: 80px;
+  font-size: 30px;
+  font-weight: bold;
+  border: none;
+  background-color: #f7f7f7;
+  color: #6f6f6f;
+}
+
+textarea {
+  width: 100%;
+  height: 600px;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  border-left: none;
+  border-right: none;
+  font-size: 18px;
+  background-color: #f7f7f7;
+  color: #6f6f6f;
+}
+
+button {
+  height: 40px;
+  cursor: pointer;
+  padding: 10px 30px;
+  background-color: #f7f7f7;
+  color: #6f6f6f;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button:hover {
+  border: 1px solid #6f6f6f;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon::before {
+  display: inline-block;
+  margin-right: .5em;
+  font-family: fontawesome;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.home-icon::before {
+  color: #333;
+  font-family: fontawesome;
+  content: "\f09b";
+  margin-right: .5em;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
