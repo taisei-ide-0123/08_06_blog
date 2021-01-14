@@ -1,7 +1,7 @@
 <?php
-session_start(); // セッションの開始
-include('functions.php'); // 関数ファイル読み込み
-check_session_id(); // idチェック関数の実行
+// 呼び出し
+include('functions.php');
+
 $pdo = connect_to_db();
 
 // データ取得SQL作成
@@ -29,8 +29,6 @@ if ($status == false) {
     $output .= "<h1>{$record["title"]}</h1>";
     $output .= "<p style='display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 8; overflow: hidden; '>{$record["body"]}</p>";
     $output .= "<a class='read-more' href='items.php?id={$record["id"]}'>READ MORE</a>";
-    $output .= "<a class='fas fa-pen-fancy' href='edit.php?id={$record["id"]}' style='padding: 30px 0; text-decoration: none;'></a>";
-    $output .= "<a class='fas fa-trash-alt' href='delete.php?id={$record["id"]}' style='text-decoration: none;'></a>";
     $output .= "</li>";
   }
   // $valueの参照を解除する．解除しないと，再度foreachした場合に最初からループしない
@@ -57,7 +55,6 @@ if ($status == false) {
     </div>
   </header>
   <div class="container">
-    <a class="far fa-edit fa-2x" href="input.php" style="color: #fff; text-decoration: none; padding: 0 10%;"></a>
     <a class="fab fa-twitter fa-2x" href="https://twitter.com/taisei_ide" style="color: #fff; text-decoration: none; padding: 0 10%;"></a>
     <a class="fab fa-facebook-square fa-2x" href="https://www.facebook.com/profile.php?id=100004433554720" style="color: #fff; text-decoration: none; padding: 0 10%;"></a>
     <a class="fab fa-github fa-2x" href="https://github.com/taisei-ide-0123" style="color: #fff; text-decoration: none; padding: 0 10%;"></a>

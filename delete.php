@@ -1,6 +1,7 @@
 <?php
-// 関数ファイル読み込み
-include("functions.php");
+session_start(); // セッションの開始
+include('functions.php'); // 関数ファイル読み込み
+check_session_id(); // idチェック関数の実行
 // idをgetで受け取る
 $id = $_GET['id'];
 // idを指定して更新するSQLを作成 -> 実行の処理

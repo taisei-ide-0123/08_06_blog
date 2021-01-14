@@ -1,7 +1,10 @@
 <?php
 // var_dump($_POST);
 // exit();
-
+session_start(); // セッションの開始
+include('functions.php'); // 関数ファイル読み込み
+check_session_id(); // idチェック関数の実行
+not_admin_user();
 // 各値をpostで受け取る
 $id = $_POST['id'];
 // var_dump($id);
@@ -12,7 +15,6 @@ $title = $_POST['title'];
 $body = $_POST['body'];
 $deadline = $_POST['deadline'];
 
-include('functions.php');
 $pdo = connect_to_db();
 
 // idを指定して更新するSQLを作成(UPDATE文)

@@ -1,8 +1,10 @@
 <?php
+session_start(); // セッションの開始
+include('functions.php'); // 関数ファイル読み込み
+check_session_id(); // idチェック関数の実行
 // var_dump($_POST);
 // exit();
-// 関数ファイル読み込み
-include("functions.php");
+
 // 送信されたidをgetで受け取る
 $id = $_GET['id'];
 // var_dump($id);
