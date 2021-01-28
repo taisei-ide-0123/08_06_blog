@@ -70,3 +70,11 @@ ul {
 .fa-trash-alt:before {
   color: lightgrey;
 }
+
+#heart {
+  color: #6f6f6f;
+}
+
+.selected {
+  color: red;
+}

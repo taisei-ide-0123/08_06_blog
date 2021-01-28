@@ -1,11 +1,16 @@
 <?php
 // 呼び出し
+session_start();
 include('functions.php');
+check_session_id();
 
+$user_id = $_SESSION['id'];
+
+// DB接続
 $pdo = connect_to_db();
 
 // データ取得SQL作成
-$sql = 'SELECT * FROM blog_table';
+$sql = 'SELECT * FROM blog_table LEFT OUTER JOIN (SELECT todo_id, COUNT(id) AS cnt FROM likes_table GROUP BY todo_id) AS likes ON blog_table.id = likes.todo_id';
 
 // SQL準備&実行
 $stmt = $pdo->prepare($sql);
@@ -29,6 +34,7 @@ if ($status == false) {
     $output .= "<h1>{$record["title"]}</h1>";
     $output .= "<p style='display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 8; overflow: hidden; '>{$record["body"]}</p>";
     $output .= "<a class='read-more' href='items.php?id={$record["id"]}'>READ MORE</a>";
+    $output .= "<a class='fas fa-heart' id='heart' href='like_create.php?user_id={$user_id}&todo_id={$record["id"]}' style='text-decoration: none; padding: 30px;'>{$record["cnt"]}</a>";
     $output .= "</li>";
   }
   // $valueの参照を解除する．解除しないと，再度foreachした場合に最初からループしない
@@ -46,6 +52,7 @@ if ($status == false) {
   <title>Blog</title>
   <link rel="stylesheet" href="css/read.css">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -63,6 +70,7 @@ if ($status == false) {
   <ul>
     <?= $output ?>
   </ul>
+  <script src="js/heart.js"></script>
 </body>
 
 </html>
